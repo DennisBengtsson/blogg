@@ -3,94 +3,31 @@ $(document).ready(function() {
     // Funktion för att förhindra XSS (Cross-Site Scripting)
     function escapeHTML(str) {
         if (str == null) {
-            return "";
+            return "";  // Eller något annat vettigt standardvärde
         }
         let p = document.createElement("p");
         p.appendChild(document.createTextNode(str));
         return p.innerHTML;
     }
 
-    // *** FUNKTION FÖR ATT SKAPA KARUSELLEN ***
-    function createCarousel(blogPosts) {
-        const carouselInner = $('#carousel-inner');
-        carouselInner.empty();
-
-        if (!blogPosts || !Array.isArray(blogPosts)) {
-            console.error('blogPosts är inte definierad eller är inte en array.');
-            carouselInner.html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
-            return;
-        }
-
-        const latestPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
-
-        latestPosts.forEach(post => {
-            const item = `
-                <div class="carousel-item">
-                    <img src="${escapeHTML(post.image)}" class="d-block w-100" alt="${escapeHTML(post.title)}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>${escapeHTML(post.title)}</h5>
-                        <p>${escapeHTML(post.description)}</p>
-                        <a href="${escapeHTML(post.link)}" class="btn btn-primary custom-read-more-button">Läs mer</a>
-                    </div>
-                </div>
-            `;
-            carouselInner.append(item);
+async function loadBlogPosts() {
+    try {
+        console.log("loadBlogPosts() körs");
+        const response = await fetch('https://dennisbengtsson.github.io/blogg/json/blog_posts.json', {
+            headers: { 'Accept': 'application/json' }
         });
-
-        //Aktivera den första karusellbilden
-        carouselInner.find('.carousel-item:first').addClass('active');
-    }
-
-    // Hämta blogPosts med AJAX (ENDAST FÖR INDEX.HTML/KARUSELLEN)
-    if (window.location.pathname.includes("index.html")) {
-        $.ajax({
-            url: "https://dennisbengtsson.github.io/blogg/json/blog_posts.json",
-            method: "GET",
-            dataType: "text",
-            success: function(data) {
-                try {
-                    const blogPosts = JSON.parse(data);
-                    createCarousel(blogPosts);
-                } catch (e) {
-                    console.error("Fel vid parsning av JSON:", e);
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error("Fel vid hämtning av blogginlägg för index.html:", textStatus, errorThrown);
-                $('#carousel-inner').html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
-            }
-        });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Funktion för att förhindra XSS (Cross-Site Scripting)
-    function escapeHTML(str) {
-        if (str == null) {
-            return "";
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-        let p = document.createElement("p");
-        p.appendChild(document.createTextNode(str));
-        return p.innerHTML;
+        
+        const data = await response.json();
+        console.log(data);
+        // Hantera data här
+    } catch (error) {
+        console.error('Det uppstod ett fel:', error);
     }
-
-    async function loadBlogPosts() {
-        try {
-            console.log("loadBlogPosts() körs");
-            const response = await fetch('https://dennisbengtsson.github.io/blogg/json/blog_posts.json', {
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
-            const blogPosts = await response.json();
-            console.log("blogPosts data:", blogPosts);
-
-            const blogList = document.getElementById('blog-list');
-            if (!blogList) {
-                console.error('Element med ID "blog-list" hittades inte.');
-                return;
-            }
+}
 
             blogList.innerHTML = '';
 
@@ -122,5 +59,93 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (window.location.pathname.includes("blog.html")) {
         loadBlogPosts();
+    }
+});
+
+$(document).ready(function() {
+    function createCarousel(blogPosts) {
+        const carouselInner = $('#carousel-inner');
+        carouselInner.empty();
+
+        if (!blogPosts || !Array.isArray(blogPosts)) {
+            console.error('blogPosts är inte definierad eller är inte en array.');
+            carouselInner.html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
+            return;
+        }
+
+        const latestPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+
+        latestPosts.forEach((post, index) => {
+            const { title, description, image, link } = post;
+            const activeClass = index === 0 ? 'active' : '';
+            const escapedTitle = escapeHTML(title);
+            const escapedDescription = escapeHTML(description);
+            const escapedImage = escapeHTML(image);
+            const escapedLink = escapeHTML(link);
+
+            carouselInner.append(`
+                <div class="carousel-item ${activeClass}">
+                    <img src="${escapedImage}" class="d-block w-100" alt="${escapedTitle}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>${escapedTitle}</h5>
+                        <p>${escapedDescription}</p>
+                        <a href="${escapedLink}" class="btn btn-primary custom-read-more-button">Läs mer</a>
+                    </div>
+                </div>
+            `);
+        });
+    }
+
+    if (window.location.pathname.includes("index.html")) {
+        // Hämta blogPosts med AJAX (ENDAST FÖR INDEX.HTML)
+        $.ajax({
+            url: "https://dennisbengtsson.github.io/blogg/json/blog_posts.json",
+            method: "GET",
+            dataType: "text", // ÄNDRAD TILL TEXT
+            success: function(data) {
+                try {
+                    const blogPosts = JSON.parse(data); // Parsa JSON manuellt
+                    createCarousel(blogPosts);
+                } catch (e) {
+                    console.error("Fel vid parsning av JSON:", e);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Fel vid hämtning av blogginlägg för index.html:", textStatus, errorThrown);
+                $('#carousel-inner').html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
+            }
+        });
+    }
+
+    // *** FUNKTION FÖR ATT SKAPA KARUSELLEN ***
+    function createCarousel(blogPosts) {
+        const carouselInner = $('#carousel-inner');
+        carouselInner.empty(); // Rensa eventuellt tidigare innehåll
+
+        // Kontrollera att blogPosts är definierad och en array
+        if (!blogPosts || !Array.isArray(blogPosts)) {
+            console.error('blogPosts är inte definierad eller är inte en array.');
+            carouselInner.html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
+            return; // Avbryt funktionen
+        }
+
+        // Sortera blogginläggen efter datum (nyaste först) och ta de 5 senaste
+        const latestPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+
+        // Skapa karusell-items
+        latestPosts.forEach((post, index) => {
+            const activeClass = index === 0 ? 'active' : ''; // Första item ska ha klassen 'active'
+            const item = `
+                <div class="carousel-item ${activeClass}">
+                    <img src="${escapeHTML(post.image)}" class="d-block w-100" alt="${escapeHTML(post.title)}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>${escapeHTML(post.title)}</h5>
+                        <p>${escapeHTML(post.description)}</p>
+                        <a href="${escapeHTML(post.link)}" class="btn btn-primary custom-read-more-button">Läs mer</a>
+                    </div>
+                </div>
+            `;
+            carouselInner.append(item);
+        });
     }
 });
