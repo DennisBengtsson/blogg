@@ -75,17 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 $(document).ready(function() {
-
-    // *** KOD FÖR INDEX.HTML (KARUSELLEN) ***
     if (window.location.pathname.includes("index.html")) {
-        // Hämta blogPosts med AJAX (ENDAST FÖR INDEX.HTML)
         $.ajax({
-            url: "../json/blog_posts.json", // Ers��tt med din faktiska URL!
+            url: "/DennisBengtsson/blogg/json/blog_posts.json", // Justera sökvägen här
             method: "GET",
-            dataType: "text", // ÄNDRAD TILL TEXT
+            dataType: "text",
             success: function(data) {
                 try {
-                    const blogPosts = JSON.parse(data); // Parsa JSON manuellt
+                    const blogPosts = JSON.parse(data);
                     createCarousel(blogPosts);
                 } catch (e) {
                     console.error("Fel vid parsning av JSON:", e);
@@ -97,6 +94,7 @@ $(document).ready(function() {
             }
         });
     }
+});
 
     // *** FUNKTION FÖR ATT SKAPA KARUSELLEN ***
     function createCarousel(blogPosts) {
