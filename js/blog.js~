@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const blogItem = document.createElement('div');
                 blogItem.className = 'row blog-item px-3 pb-5';
 
-                // Anv��nd textContent för att undvika XSS
+                // Använd textContent för att undvika XSS
                 blogItem.innerHTML = `
                     <div class="col-md-5">
                         <img class="img-fluid mb-4 mb-md-0" src="${escapeHTML(post.image)}" alt="${escapeHTML(post.title)}">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <p>${escapeHTML(post.description)}</p>
                         <!-- blog.html: Ändrad knappstil till outline -->
-                        <a class="btn btn-sm btn-outline-primary next-post" href="${escapeHTML(post.link)}">Läs mer <i class="fa fa-angle-right"></i></a>
+                        <a class="btn btn-sm btn-outline-primary next-post" href="${escapeHTML(post.link)}">L��s mer <i class="fa fa-angle-right"></i></a>
                     </div>
                 `;
 
@@ -75,6 +75,45 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 $(document).ready(function() {
+    function createCarousel(blogPosts) {
+        const carouselInner = $('#carousel-inner');
+        carouselInner.empty(); // Rensa eventuellt tidigare innehåll
+
+        // Kontrollera att blogPosts är definierad och en array
+        if (!blogPosts || !Array.isArray(blogPosts)) {
+            console.error('blogPosts är inte definierad eller är inte en array.');
+            carouselInner.html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
+            return; // Avbryt funktionen
+        }
+
+        // Sortera blogginläggen efter datum (nyaste först) och ta de 5 senaste
+        const latestPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+
+        // Skapa karusell-items
+        latestPosts.forEach((post, index) => {
+            const activeClass = index === 0 ? 'active' : ''; // Första item ska ha klassen 'active'
+
+            const escapedTitle = escapeHTML(post.title);
+            const escapedDescription = escapeHTML(post.description);
+            const escapedImage = escapeHTML(post.image);
+            const escapedLink = escapeHTML(post.link);
+
+            const item = `
+                <div class="carousel-item ${activeClass}">
+                    <img src="${escapedImage}" class="d-block w-100" alt="${escapedTitle}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>${escapedTitle}</h5>
+                        <p>${escapedDescription}</p>
+                        <!-- index.html (karusellen): Behöver INTE outline-stil här? -->
+                        <a href="${escapedLink}" class="btn btn-primary custom-read-more-button">Läs mer</a>
+                    </div>
+                </div>
+            `;
+            carouselInner.append(item);
+        });
+}
+
+
     if (window.location.pathname.includes("index.html")) {
         $.ajax({
             url: "/DennisBengtsson/blogg/json/blog_posts.json", // Justera sökvägen här
@@ -94,36 +133,4 @@ $(document).ready(function() {
             }
         });
     }
-
-    // *** FUNKTION FÖR ATT SKAPA KARUSELLEN ***
-    function createCarousel(blogPosts) {
-        const carouselInner = $('#carousel-inner');
-        carouselInner.empty(); // Rensa eventuellt tidigare innehåll
-
-        // Kontrollera att blogPosts är definierad och en array
-        if (!blogPosts || !Array.isArray(blogPosts)) {
-            console.error('blogPosts är inte definierad eller är inte en array.');
-            carouselInner.html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
-            return; // Avbryt funktionen
-        }
-
-        // Sortera blogginläggen efter datum (nyaste först) och ta de 5 senaste
-        const latestPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
-
-        // Skapa karusell-items
-        latestPosts.forEach((post, index) => {
-            const activeClass = index === 0 ? 'active' : ''; // Första item ska ha klassen 'active'
-            const item = `
-                <div class="carousel-item ${activeClass}">
-                    <img src="${post.image}" class="d-block w-100" alt="${post.title}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>${post.title}</h5>
-                        <p>${post.description}</p>
-                        <!-- index.html (karusellen): Behöver INTE outline-stil här? -->
-                        <a href="${post.link}" class="btn btn-primary custom-read-more-button">Läs mer</a>
-                    </div>
-                </div>
-            `;
-            carouselInner.append(item);
-        });
-}
+});
