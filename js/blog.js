@@ -9,25 +9,24 @@ document.addEventListener('DOMContentLoaded', function() {
         return p.innerHTML;
     }
 
-    async function loadBlogPosts() {
-        try {
-            console.log("loadBlogPosts() körs");
-            const response = await fetch('https://dennisbengtsson.github.io/blogg/json/blog_posts.json', {
-                headers: { 'Accept': 'application/json' }
-            });
-            console.log("Response status:", response.status);
-            console.log("Response ok:", response.ok);
-
-            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
-            const blogPosts = await response.json();
-            console.log("blogPosts data:", blogPosts);
-
-            const blogList = document.getElementById('blog-list');
-            if (!blogList) {
-                console.error('Element med ID "blog-list" hittades inte.');
-                return;
-            }
+async function loadBlogPosts() {
+    try {
+        console.log("loadBlogPosts() körs");
+        const response = await fetch('https://dennisbengtsson.github.io/blogg/json/blog_posts.json', {
+            headers: { 'Accept': 'application/json' }
+        });
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        console.log(data);
+        // Hantera data här
+    } catch (error) {
+        console.error('Det uppstod ett fel:', error);
+    }
+}
 
             blogList.innerHTML = '';
 
