@@ -3,7 +3,7 @@
 // Funktion för att hämta blogginlägg från JSON-filen
 async function getBlogPosts() {
     try {
-        const response = await fetch('./json/blog_posts.json');
+        const response = await fetch('../json/blog_posts.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
