@@ -7,7 +7,7 @@
         "profileNameId": "profile-name",
         "profileDescriptionId": "profile-description",
         "profileImageId": "profile-image",
-        "profileImagePath": "/img/profile.jpg",
+        "profileImagePath": "img/profile.jpg",
         "xLinkId": "x-link",
         "facebookLinkId": "facebook-link",
         "linkedinLinkId": "linkedin-link",
