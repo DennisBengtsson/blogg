@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Rösträknare i Svenska kyrkan",
+    "image": "img/lunds-domkyrka.jpg",
+    "date": "2025-03-12",
+    "category": "Kategori 1",
+    "comments": 0,
+    "description": "Jag funderar på att ställa upp som rösträknare i kyrkovalet.",
+    "link": "blog/post1.html"
+  },
+  {
+    "title": "Välkommen till min hemsida",
+    "image": "img/betongbil.jpg",
+    "date": "2025-03-12",
+    "category": "Kategori 2",
+    "comments": 0,
+    "description": "Här har jag tänkt ladda upp arbetsrelaterade och personliga saker.",
+    "link": "blog/post2.html"
+  }
+]
