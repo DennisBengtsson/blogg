@@ -74,25 +74,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-if (window.location.pathname.includes("index.html")) {
-    $.ajax({
-        url: "/DennisBengtsson/blogg/json/blog_posts.json", // Justera sökvägen här
-        method: "GET",
-        dataType: "text",
-        success: function(data) {
-            try {
-                const blogPosts = JSON.parse(data);
-                createCarousel(blogPosts);
-            } catch (e) {
-                console.error("Fel vid parsning av JSON:", e);
+$(document).ready(function() {
+    if (window.location.pathname.includes("index.html")) {
+        $.ajax({
+            url: "/DennisBengtsson/blogg/json/blog_posts.json", // Justera sökvägen här
+            method: "GET",
+            dataType: "text",
+            success: function(data) {
+                try {
+                    const blogPosts = JSON.parse(data);
+                    createCarousel(blogPosts);
+                } catch (e) {
+                    console.error("Fel vid parsning av JSON:", e);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Fel vid hämtning av blogginlägg för index.html:", textStatus, errorThrown);
+                $('#carousel-inner').html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
             }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error("Fel vid hämtning av blogginlägg för index.html:", textStatus, errorThrown);
-            $('#carousel-inner').html('<div class="carousel-item active">Kunde inte ladda blogginlägg.</div>');
-        }
-    });
-}
+        });
+    }
 
     // *** FUNKTION FÖR ATT SKAPA KARUSELLEN ***
     function createCarousel(blogPosts) {
