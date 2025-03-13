@@ -128,7 +128,7 @@ const updateSidebar = (sidebar, data) => {
 
 const generateMenu = async () => {
     try {
-        const response = await fetch('../data.json');
+        const response = await fetch('data.json'); // Ändra denna rad
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const data = await response.json();
         const menu = data.menu;
