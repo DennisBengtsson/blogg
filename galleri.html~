@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title id="page-title">Personlig Blogg</title>
+    <title id="page-title">
+        Bildgalleri
+    </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Personlig Blogg Template" name="keywords">
     <meta content="En ren och responsiv personlig blogg template." name="description">
@@ -21,7 +23,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Content Security Policy (CSP) -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/js/;">
+    <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com;
         style-src  'self' https://fonts.googleapis.com 'unsafe-inline';
@@ -35,11 +37,20 @@
     ">
 
     <style>
-        .bildtext {
-            font-size: 0.6em;
-            color: #666;
-            display: block;
-            text-align: center;
+        .gallery-item {
+            margin-bottom: 20px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -50,63 +61,63 @@
 
         <div class="content">
             <!-- Navbar Start -->
-            <div id="header-container"></div>
+            <div class="container p-0">
+                <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+                    <a href="index.html" class="navbar-brand d-block d-lg-none">Navigering</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse"
+                        data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div id="header-container"></div>
+                </nav>
+            </div>
             <!-- Navbar End -->
 
             <!-- Page Header Start -->
             <div class="container py-5 px-2 bg-primary">
                 <div class="row py-5 px-4">
                     <div class="col-sm-6 text-center text-md-left">
-                        <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">Kontakta Mig</h1>
+                        <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">Bildgalleri</h1>
                     </div>
                     <div class="col-sm-6 text-center text-md-right">
                         <div class="d-inline-flex pt-2">
                             <h4 class="m-0 text-white"><a class="text-white" href="index.html">Hem</a></h4>
                             <h4 class="m-0 text-white px-2">/</h4>
-                            <h4 class="m-0 text-white">Kontakta mig</h4>
+                            <h4 class="m-0 text-white">Bildgalleri</h4>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Page Header End -->
 
-            <!-- Contact Start -->
-            <div class="container bg-white pt-5">
-                <div class="row px-3 pb-2">
-                    <div class="col-sm-4 text-center mb-3">
-                        <i class="fa fa-2x fa-map-marker-alt mb-3 text-primary"></i>
-                        <h4 class="font-weight-bold">Adress</h4>
-                        <p>Skåne (NV)</p>
-                    </div>
-                    <div class="col-sm-4 text-center mb-3">
-                        <i class="fa fa-2x fa-phone-alt mb-3 text-primary"></i>
-                        <h4 class="font-weight-bold">Telefon</h4>
-                        <p><a href="tel:0730741489">073-074 14 89</a></p>
-                    </div>
-                    <div class="col-sm-4 text-center mb-3">
-                        <i class="far fa-2x fa-envelope mb-3 text-primary"></i>
-                        <h4 class="font-weight-bold">Email</h4>
-                        <p class="email-address"><a
-                                href="mailto:dennisrmgbengtsson@gmail.com">DennisRMGBengtsson</a></p>
-                    </div>
+            <!-- Gallery Start -->
+            <div class="container bg-white py-5 px-2">
+                <div class="row" id="gallery-container">
+                    <!-- Bilder kommer att läggas till här av JavaScript -->
                 </div>
             </div>
-            <!-- Contact End -->
+            <!-- Gallery End -->
 
             <!-- Footer Start -->
-            <div id="footer-container">
-            </div>
+            <div id="footer-container"></div>
             <!-- Footer End -->
         </div>
     </div>
 
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
     <!-- JavaScript Libraries -->
-    <script src="jquery/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="jquery/jquery.waypoints.min.js"></script>
 
-    <script src="js/main.js"></script>
+    <!-- Template Javascript -->
+    <script src="js/templates.js"></script>
     <script src="js/site-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
 </body>
 
 </html>
