@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function loadBlogPosts() {
         try {
             console.log("loadBlogPosts() körs");
-            const response = await fetch('"url": "https://dennisbengtsson.github.io/blogg/json/blog_posts.json"', {
+            const response = await fetch('https://dennisbengtsson.github.io/blogg/json/blog_posts.json', {
                 headers: { 'Accept': 'application/json' }
             });
             console.log("Response status:", response.status);
