@@ -1,23 +1,23 @@
 const headerHTML = `
     <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
-        <a href="./index.html" class="navbar-brand d-block d-lg-none">Navigering</a>
+        <a href="index.html" class="navbar-brand d-block d-lg-none">Navigering</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav m-auto">
                 <div class="nav-item dropdown">
-                    <a href="./index.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Hem</a>
+                    <a href="index.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Hem</a>
                     <div class="dropdown-menu">
-                        <a href="./blog.html" class="dropdown-item" data-page="blog">Blogg</a>
-                        <a href="./bilder.html" class="dropdown-item" data-page="bilder">Bilder</a>
+                        <a href="blog.html" class="dropdown-item" data-page="blog">Blogg</a>
+                        <a href="bilder.html" class="dropdown-item" data-page="bilder">Bilder</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="./about.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Om Mig</a>
+                    <a href="about.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Om Mig</a>
                     <div class="dropdown-menu">
-                        <a href="./about.html" class="dropdown-item" data-page="about">Om Mig</a>
-                        <a href="./contact.html" class="dropdown-item" data-page="contact">Kontakt</a>
+                        <a href="about.html" class="dropdown-item" data-page="about">Om Mig</a>
+                        <a href="contact.html" class="dropdown-item" data-page="contact">Kontakt</a>
                     </div>
                 </div>
                 <!-- Removed direct links to Blogg, Bilder, About, and Contact -->
