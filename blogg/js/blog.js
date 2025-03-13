@@ -80,7 +80,7 @@ $(document).ready(function() {
     if (window.location.pathname.includes("index.html")) {
         // Hämta blogPosts med AJAX (ENDAST FÖR INDEX.HTML)
         $.ajax({
-            url: "/blogg/json/blog_posts.json", // Ers��tt med din faktiska URL!
+            url: "../json/blog_posts.json", // Ers��tt med din faktiska URL!
             method: "GET",
             dataType: "text", // ÄNDRAD TILL TEXT
             success: function(data) {

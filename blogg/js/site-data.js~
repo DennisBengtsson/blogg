@@ -45,7 +45,7 @@ const sidebarHTML = `
                  alt="" id="profile-image">
             <h1 class="font-weight-bold" id="profile-name"></h1>
             <p class="mb-4" id="profile-description">
-                <span id="static-sidebar-text">Arbetar med betong och trä. Fyrbarnsfar med vanlig sunt bonnförnuft.</span>
+                <span id="static-sidebar-text"></span>
             </p>
             <div class="d-flex justify-content-center mb-5">
                 <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer" id="x-link"><i

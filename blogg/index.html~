@@ -9,7 +9,7 @@
     <meta content="Dennis Bengtsson blogg" name="description">
 
 
-    <base href="/blogg/">
+<base href="/blogg/">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -39,30 +39,25 @@
     <style>
         /* Begränsa höjden på karusellen till 50% av visningsportens höjd */
         #blog-carousel {
-            height: 40vh;
-            /* vh = viewport height */
-            overflow: hidden;
-            /* D��lj eventuellt överflödigt innehåll */
+            height: 40vh; /* vh = viewport height */
+            overflow: hidden; /* Dölj eventuellt överflödigt innehåll */
         }
 
         /* Se till att bilden fyller den tillgängliga höjden, men inte mer */
         #blog-carousel .carousel-inner>.carousel-item>img {
             max-height: 100%;
-            object-fit: cover;
-            /* Behåll bildens proportioner och fyll utrymmet */
+            object-fit: cover; /* Behåll bildens proportioner och fyll utrymmet */
         }
 
         .carousel-caption {
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Mörkare bakgrund för b��ttre läsbarhet */
+            background-color: rgba(0, 0, 0, 0.5); /* Mörkare bakgrund för bättre läsbarhet */
             padding: 15px;
             border-radius: 5px;
         }
-
-        .carousel-caption h5,
-        .carousel-caption p {
+        .carousel-caption h5, .carousel-caption p {
             color: white;
         }
+
     </style>
 </head>
 
@@ -77,13 +72,27 @@
 
             <!-- Page Specific Content -->
             <div id="page-content-container">
-                <!-- All sidspecifikt innehåll borttaget här -->
+                <!-- Carousel Start -->
+                <div class="container p-0">
+                    <div id="blog-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" id="carousel-inner">
+                            <!-- Carousel items kommer att laddas här dynamiskt -->
+                        </div>
+                        <a class="carousel-control-prev" href="#blog-carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Föregående</span>
+                        </a>
+                        <a class="carousel-control-next" href="#blog-carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Nästa</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Carousel End -->
             </div>
 
             <!-- Footer Start -->
-            <div id="footer-container">
-                 <p>Tips: Missa inte "Polar Grillen" i Jokkmokk för en fantastisk renkorv!</p>
-            </div>
+            <div id="footer-container"></div>
             <!-- Footer End -->
         </div>
     </div>
