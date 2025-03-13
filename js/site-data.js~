@@ -69,7 +69,7 @@ const sidebarHTML = `
 
 const loadAllData = async () => {
     try {
-        const response = await fetch('/data.json');
+        const response = await fetch('../data.json'); // Justera sökvägen här
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const data = await response.json();
 
@@ -79,6 +79,36 @@ const loadAllData = async () => {
 
     } catch (error) {
         console.error('Kunde inte ladda data:', error);
+    }
+};
+
+const generateMenu = async () => {
+    try {
+        const response = await fetch('../data.json'); // Justera sökvägen här
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        const data = await response.json();
+        const menu = data.menu;
+        let menuHTML = '';
+
+        menu.forEach(item => {
+            if (item.dropdown) {
+                menuHTML += `
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">${item.label}</a>
+                        <div class="dropdown-menu">
+                `;
+                item.dropdown.forEach(dropdownItem => {
+                    menuHTML += `<a href="${dropdownItem.url}" class="dropdown-item" data-page="${dropdownItem.dataPage}">${dropdownItem.label}</a>`;
+                });
+                menuHTML += `</div></div>`;
+            } else {
+                menuHTML += `<a href="${item.url}" class="nav-item nav-link" data-page="${item.dataPage}">${item.label}</a>`;
+            }
+        });
+        return menuHTML;
+    } catch (error) {
+        console.error('Kunde inte ladda menyn:', error);
+        return '';
     }
 };
 
