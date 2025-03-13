@@ -10,51 +10,50 @@ $(document).ready(function() {
         return p.innerHTML;
     }
 
-async function loadBlogPosts() {
-    try {
-        console.log("loadBlogPosts() körs");
-        const response = await fetch('https://dennisbengtsson.github.io/blogg/json/blog_posts.json', {
-            headers: { 'Accept': 'application/json' }
-        });
-        
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        
-        const data = await response.json();
-        console.log(data);
-        // Hantera data här
-    } catch (error) {
-        console.error('Det uppstod ett fel:', error);
-    }
-}
-
-            blogList.innerHTML = '';
-
-            blogPosts.forEach(post => {
-                blogList.innerHTML += `
-                    <div class="row blog-item px-3 pb-5">
-                        <div class="col-md-5">
-                            <img class="img-fluid mb-4 mb-md-0" src="${escapeHTML(post.image)}" alt="${escapeHTML(post.title)}">
-                        </div>
-                        <div class="col-md-7">
-                            <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">${escapeHTML(post.title)}</h3>
-                            <div class="d-flex mb-3">
-                                <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ${escapeHTML(post.date)}</small>
-                                <small class="mr-2 text-muted"><i class="fa fa-folder"></i> ${escapeHTML(post.category)}</small>
-                                <small class="mr-2 text-muted"><i class="fa fa-comments"></i> ${Number.isInteger(post.comments) ? post.comments : 0} Kommentarer</small>
-                            </div>
-                            <p>${escapeHTML(post.description)}</p>
-                            <a class="btn btn-sm btn-outline-primary next-post" href="${escapeHTML(post.link)}">Läs mer <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                `;
+    async function loadBlogPosts() {
+        try {
+            console.log("loadBlogPosts() körs");
+            const response = await fetch('https://dennisbengtsson.github.io/blogg/json/blog_posts.json', {
+                headers: { 'Accept': 'application/json' }
             });
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            const data = await response.json();
+            console.log(data);
+            // Hantera data här
         } catch (error) {
-            console.error('Kunde inte ladda bloggposter:', error);
-            const blogList = document.getElementById('blog-list');
-            if (blogList) blogList.innerHTML = '<p>Kunde inte ladda bloggposter. Försök igen senare.</p>';
+            console.error('Det uppstod ett fel:', error);
         }
+    }
+
+    const blogList = document.getElementById('blog-list');
+    if (blogList) {
+        blogList.innerHTML = '';
+
+        const blogPosts = []; // Lägg till din bloggpost-data här
+
+        blogPosts.forEach(post => {
+            blogList.innerHTML += `
+                <div class="row blog-item px-3 pb-5">
+                    <div class="col-md-5">
+                        <img class="img-fluid mb-4 mb-md-0" src="${escapeHTML(post.image)}" alt="${escapeHTML(post.title)}">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">${escapeHTML(post.title)}</h3>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ${escapeHTML(post.date)}</small>
+                            <small class="mr-2 text-muted"><i class="fa fa-folder"></i> ${escapeHTML(post.category)}</small>
+                            <small class="mr-2 text-muted"><i class="fa fa-comments"></i> ${Number.isInteger(post.comments) ? post.comments : 0} Kommentarer</small>
+                        </div>
+                        <p>${escapeHTML(post.description)}</p>
+                        <a class="btn btn-sm btn-outline-primary next-post" href="${escapeHTML(post.link)}">Läs mer <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            `;
+        });
     }
 
     if (window.location.pathname.includes("blog.html")) {
