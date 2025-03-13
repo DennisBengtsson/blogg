@@ -7,7 +7,7 @@
         "profileNameId": "profile-name",
         "profileDescriptionId": "profile-description",
         "profileImageId": "profile-image",
-		   "profileImagePath": "https://dennisbengtsson.github.io/DennisBengtsson/blogg/img/profile.jpg"
+"profileImagePath": "/DennisBengtsson/blogg/json/blog_posts.json",
         "xLinkId": "x-link",
         "facebookLinkId": "facebook-link",
         "linkedinLinkId": "linkedin-link",
