@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function loadBlogPosts() {
         try {
             console.log("loadBlogPosts() körs");
-            const response = await fetch('"url": "https://dennisbengtsson.github.io/DennisBengtsson/blogg/json/blog_posts.json"', {
+            const response = await fetch('"url": "https://dennisbengtsson.github.io/blogg/json/blog_posts.json"', {
                 headers: { 'Accept': 'application/json' }
             });
             console.log("Response status:", response.status);
@@ -98,7 +98,7 @@ $(document).ready(function() {
 
     if (window.location.pathname.includes("index.html")) {
         $.ajax({
-            url: "/DennisBengtsson/blogg/json/blog_posts.json",
+            url: "https://dennisbengtsson.github.io/blogg/json/blog_posts.json",
             method: "GET",
             dataType: "text",
             success: function(data) {
