@@ -12,20 +12,25 @@
 <base href="https://github.com/DennisBengtsson/blogg/">
 
     <!-- Favicon -->
-    <link href="/blogg/img/favicon.ico" rel="icon">
+    <link href="../img/favicon.ico" rel="icon">
 
     <!-- Font Awesome (lokalt installerat) -->
-    <link rel="stylesheet" href="/blogg/fonts/fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="../fonts/fontawesome-free-6.7.2-web/css/all.min.css">
 
     <!-- Font Open Sans (lokalt definierat) -->
-    <link href="/blogg/css/opensans.css" rel="stylesheet">
+    <link href="../css/opensans.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/blogg/css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
     <!-- Content Security Policy (CSP) -->
+
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/js/;">
-        default-src 'self';
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://github.com 'unsafe-inline';">        
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com;">
+<meta http-equiv="Content-Security-Policy" content="img-src 'self' data: https://github.com;">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/jquery/ https://github.com/DennisBengtsson/blogg/js/;">
+default-src 'self';
         script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com;
         style-src  'self' https://fonts.googleapis.com 'unsafe-inline';
         img-src 'self' data:;
@@ -34,7 +39,6 @@
         object-src 'none';
         base-uri 'self';
         form-action 'self';
-        frame-ancestors 'none';
     ">
 
     <style>

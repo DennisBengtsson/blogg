@@ -23,8 +23,13 @@
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Content Security Policy (CSP) -->
+
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/js/;">
-        default-src 'self';
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://github.com 'unsafe-inline';">        
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com;">
+<meta http-equiv="Content-Security-Policy" content="img-src 'self' data: https://github.com;">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/jquery/ https://github.com/DennisBengtsson/blogg/js/;">
+default-src 'self';
         script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com;
         style-src  'self' https://fonts.googleapis.com 'unsafe-inline';
         img-src 'self' data:;
@@ -33,7 +38,6 @@
         object-src 'none';
         base-uri 'self';
         form-action 'self';
-        frame-ancestors 'none';
     ">
 
     <style>

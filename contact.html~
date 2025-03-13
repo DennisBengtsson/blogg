@@ -21,7 +21,8 @@
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Content Security Policy (CSP) -->
-    <meta http-equiv="Content-Security-Policy" content="
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/js/;">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://github.com 'unsafe-inline';">    
         default-src 'self';
         script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com;
         style-src  'self' https://fonts.googleapis.com 'unsafe-inline';
@@ -31,7 +32,6 @@
         object-src 'none';
         base-uri 'self';
         form-action 'self';
-        frame-ancestors 'none';
     ">
 
     <style>
