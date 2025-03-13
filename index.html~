@@ -31,7 +31,7 @@
     style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; /* Tillåt Google Fonts */
     img-src 'self' data:;  /* Tillåt bilder från samma domän och data-URI:er */
     font-src 'self' https://fonts.gstatic.com; /* Tillåt teckensnitt från samma domän och Google Fonts */
-<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/js/;">
+content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/js/;:
 ">
 
 default-src 'self';
