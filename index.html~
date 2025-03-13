@@ -9,7 +9,7 @@
     <meta content="Dennis Bengtsson blogg" name="description">
 
 
-<base href="/blogg/">
+<base href="">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -36,6 +36,7 @@
     base-uri 'self';
     form-action 'self';
 ">
+
     <style>
         /* Begränsa höjden på karusellen till 50% av visningsportens höjd */
         #blog-carousel {
