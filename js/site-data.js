@@ -41,7 +41,7 @@ const footerHTML = `
 const sidebarHTML = `
     <div class="sidebar">
         <div class="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
-            <img class="mx-auto d-block w-75 bg-primary img-fluid rounded-circle mb-4 p-3" src="img/profile.jpg"
+            <img class="mx-auto d-block w-75 bg-primary img-fluid rounded-circle mb-4 p-3" src="./img/profile.jpg"
                  alt="" id="profile-image">
             <h1 class="font-weight-bold" id="profile-name"></h1>
             <p class="mb-4" id="profile-description">
@@ -117,7 +117,7 @@ const updateSidebar = (sidebar, data) => {
     if (sidebar.profileDescriptionId) updateElementText(sidebar.profileDescriptionId, data.description);
      if (sidebar.profileImageId) {
         const profileImage = document.getElementById(sidebar.profileImageId);
-        if (profileImage) profileImage.src = "img/profile.jpg"; //Uppdatera bildens källa
+        if (profileImage) profileImage.src = "./img/profile.jpg"; //Uppdatera bildens källa
         else console.warn(`Element med ID "${sidebar.profileImageId}" hittades inte!`);
     }
     if (sidebar.xLinkId) updateElementHref(sidebar.xLinkId, data.x);
