@@ -69,7 +69,7 @@ const sidebarHTML = `
 
 const loadAllData = async () => {
     try {
-        const response = await fetch('../data.json');
+        const response = await fetch('./data.json'); // Ändra denna rad
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const data = await response.json();
 
@@ -81,6 +81,8 @@ const loadAllData = async () => {
         console.error('Kunde inte ladda data:', error);
     }
 };
+
+
 
 const updatePageTitle = (data) => {
     const pageTitleElement = document.getElementById('page-title');
