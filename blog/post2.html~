@@ -12,16 +12,16 @@
 <base href="https://dennisbengtsson.github.io/blogg/">
 
     <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
+    <link href="/blogg/img/favicon.ico" rel="icon">
 
     <!-- Font Awesome (lokalt installerat) -->
-    <link rel="stylesheet" href="../fonts/fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="/blogg/fonts/fontawesome-free-6.7.2-web/css/all.min.css">
 
     <!-- Font Open Sans (lokalt definierat) -->
-    <link href="../css/opensans.css" rel="stylesheet">
+    <link href="/blogg/css/opensans.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/blogg/css/style.css" rel="stylesheet">
 
     <!-- Content Security Policy (CSP) -->
 <meta http-equiv="Content-Security-Policy" content="
@@ -94,7 +94,7 @@
 <div class="d-flex justify-content-between align-items-center">
     <a class="btn btn-sm btn-outline-primary back" href="/blogg/blog.html">Tillbaka till bloggen <i class="fa fa-angle-right"></i></a>
     <div class="text-right">
-        <a href="" class="btn btn-sm btn-outline-primary prev-post">Välkommen till min hemsida</a>
+        <a href="" class="btn btn-sm btn-outline-primary prev-post">Föregående inlägg</a>
         <a href="" class="btn btn-sm btn-outline-primary next-post">Nästa inlägg</a>
     </div>
 </div>
