@@ -117,7 +117,7 @@ const updateSidebar = (sidebar, data) => {
     if (sidebar.profileDescriptionId) updateElementText(sidebar.profileDescriptionId, data.description);
      if (sidebar.profileImageId) {
         const profileImage = document.getElementById(sidebar.profileImageId);
-        if (profileImage) profileImage.src = "../img/profile.jpg"; //Uppdatera bildens källa
+        if (profileImage) profileImage.src = "img/profile.jpg"; //Uppdatera bildens källa
         else console.warn(`Element med ID "${sidebar.profileImageId}" hittades inte!`);
     }
     if (sidebar.xLinkId) updateElementHref(sidebar.xLinkId, data.x);
