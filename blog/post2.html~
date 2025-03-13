@@ -9,7 +9,7 @@
     <meta content="Välkommen till min hemsida" name="description">
 
 
-<base href="https://dennisbengtsson.github.com/blogg/">
+<base href="https://dennisbengtsson.github.io/blogg/">
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
@@ -26,8 +26,8 @@
     <!-- Content Security Policy (CSP) -->
 <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com https://github.com/DennisBengtsson/blogg/js/ https://github.com/DennisBengtsson/blogg/jquery/;
-    img-src 'self' data: https://github.com;
+    script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com https://dennisbengtsson.github.io/blogg/js/ https://dennisbengtsson.github.io/blogg/jquery/;
+    img-src 'self' data: https://https://dennisbengtsson.github.io/img;
     style-src 'self' 'unsafe-inline';
     connect-src 'self';
     font-src 'self';
