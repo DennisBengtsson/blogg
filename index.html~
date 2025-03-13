@@ -24,9 +24,16 @@
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Content Security Policy (CSP) -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline' https://github.com/DennisBengtsson/blogg/js/;">
-<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://github.com 'unsafe-inline';">	        
-        default-src 'self';
+
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';  /* Tillåt inline-skript (tillfälligt, försök att ta bort detta) */
+    style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; /* Tillåt Google Fonts */
+    img-src 'self' data:;  /* Tillåt bilder från samma domän och data-URI:er */
+    font-src 'self' https://fonts.gstatic.com; /* Tillåt teckensnitt från samma domän och Google Fonts */
+">
+
+default-src 'self';
         script-src 'self' https://code.jquery.com https://stackpath.bootstrapcdn.com 'unsafe-inline';
         style-src  'self' https://fonts.googleapis.com 'unsafe-inline';
         img-src 'self' data:;
