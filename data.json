@@ -13,7 +13,7 @@
         "linkedinLinkId": "linkedin-link",
         "instagramLinkId": "instagram-link"
     },
-    "x": "https://x.com/...",
+    "x": "x",
     "facebook": "https://facebook.com/...",
     "linkedin": "https://linkedin.com/...",
     "instagram": "https://instagram.com/...",
