@@ -9957,7 +9957,7 @@ h3 {
     text-decoration: none; /* Ta bort understrykning */
     display: inline-block; /* Viktigt för att padding ska fungera */
     transition: background-color 0.3s ease, color 0.3s ease; /* Mjuk övergång */
-    margin-top: 100px; /* LÄGG TILL DEN HÄR RADEN */
+    margin-top: 30px; /* LÄGG TILL DEN HÄR RADEN */
 }
 
 .carousel-caption h5 {
