@@ -3,7 +3,7 @@ $(document).ready(function() {
     // Funktion för att förhindra XSS (Cross-Site Scripting)
     function escapeHTML(str) {
         if (str == null) {
-            return "";  // Eller något annat vettigt standardvärde
+            return ""; // Eller något annat vettigt standardvärde
         }
         let p = document.createElement("p");
         p.appendChild(document.createTextNode(str));
@@ -16,14 +16,14 @@ $(document).ready(function() {
             const response = await fetch('https://dennisbengtsson.github.io/blogg/json/blog_posts.json', {
                 headers: { 'Accept': 'application/json' }
             });
-            
+
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Nätverksresponsen var inte ok');
             }
-            
+
             const data = await response.json();
             console.log(data);
-            // Hantera data här
+
             const blogList = document.getElementById('blog-list');
             if (blogList) {
                 blogList.innerHTML = '';
@@ -51,7 +51,7 @@ $(document).ready(function() {
         } catch (error) {
             console.error('Kunde inte ladda bloggposter:', error);
             const blogList = document.getElementById('blog-list');
-            if (blogList) blogList.innerHTML = '<p>Kunde inte ladda bloggposter. Försök igen senare.</p>';
+            if (blogList) blogList.innerHTML = '<p>Kunde inte ladda bloggposter. Förs��k igen senare.</p>';
         }
     }
 
@@ -83,16 +83,15 @@ $(document).ready(function() {
 
         const latestPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
 
-        latestPosts.forEach((post, index) => {
+        latestPosts.forEach(post => {
             const { title, description, image, link } = post;
-            const activeClass = index === 0 ? 'active' : '';
             const escapedTitle = escapeHTML(title);
             const escapedDescription = escapeHTML(description);
             const escapedImage = escapeHTML(image);
             const escapedLink = escapeHTML(link);
 
             carouselInner.append(`
-                <div class="carousel-item ${activeClass}">
+                <div class="carousel-item">
                     <img src="${escapedImage}" class="d-block w-100" alt="${escapedTitle}">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>${escapedTitle}</h5>
@@ -102,10 +101,13 @@ $(document).ready(function() {
                 </div>
             `);
         });
+
+        //Aktivera den första karusellbilden
+         carouselInner.find('.carousel-item:first').addClass('active');
     }
 
     if (window.location.pathname.includes("index.html")) {
-        // Hämta blogPosts med AJAX (ENDAST FÖR INDEX.HTML)
+        // H��mta blogPosts med AJAX (ENDAST FÖR INDEX.HTML)
         $.ajax({
             url: "https://dennisbengtsson.github.io/blogg/json/blog_posts.json",
             method: "GET",
