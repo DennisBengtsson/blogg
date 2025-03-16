@@ -44,8 +44,8 @@ const sidebarHTML = `
                 <span id="static-sidebar-text"></span>
             </p>
             <div class="d-flex justify-content-center mb-5">
-                <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer" id="x-link"><i
-                        class="fab fa-x-twitter"></i></a>
+                <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer" id="telegram-link"><i
+                        class="fa-brands fa-telegram"></i></a>
                 <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer"
                    id="goodreads-link"><i class="fa-brands fa-goodreads"></i></a>
                 <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer"
