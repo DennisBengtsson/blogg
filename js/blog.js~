@@ -92,7 +92,7 @@ $(document).ready(function() {
 
             carouselInner.append(`
                 <div class="carousel-item">
-                    <img src="${escapedImage}" class="d-block w-30" alt="${escapedTitle}">
+                    <img src="${escapedImage}" class="d-block w-100" alt="${escapedTitle}">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>${escapedTitle}</h5>
                         <p>${escapedDescription}</p>
