@@ -15,8 +15,8 @@
     },
     "x": "https://x.com/...",
     "goodreads": "https://www.goodreads.com/user/show/164131463-dennis-bengtsson",
-    "linkedin": "https://linkedin.com/...",
-    "instagram": "https://instagram.com/...",
+    "linkedin": "https://se.linkedin.com/in/dennis-bengtsson-703562135",
+    "instagram": "https://www.instagram.com/dennis.bengtsson92/",
     "menu": [
         { "label": "Hem", "url": "index.html", "dataPage": "index" },
         { "label": "Om mig", "url": "about.html", "dataPage": "about" },
