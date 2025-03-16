@@ -1,5 +1,7 @@
 // post-navigation.js
 
+console.log("post-navigation.js loaded");
+
 // Funktion för att hämta blogginlägg från JSON-filen
 async function getBlogPosts() {
     try {
@@ -8,6 +10,7 @@ async function getBlogPosts() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const posts = await response.json();
+        console.log("Bloggposter:", posts); // Logga bloggposterna
         return posts;
     } catch (error) {
         console.error("Kunde inte ladda bloggposter:", error);
@@ -26,6 +29,7 @@ async function generatePostNavigation() {
 
     // Hämta den aktuella sidans filnamn
     const currentFilename = window.location.pathname.split('/').pop();
+    console.log("Aktuell fil:", currentFilename); // Logga aktuell fil
 
     // Hitta indexet för det aktuella blogginlägget i listan
     const currentIndex = posts.findIndex(post => {
@@ -33,6 +37,8 @@ async function generatePostNavigation() {
         console.log(`Jämför ${linkFilename} med ${currentFilename}`);
         return linkFilename === currentFilename;
     });
+
+    console.log("Aktuellt index:", currentIndex); // Logga aktuellt index
 
     // Hämta länkarna
     const prevLink = document.querySelector('.prev-post');
@@ -57,7 +63,7 @@ async function generatePostNavigation() {
     }
 
     if (currentIndex < posts.length - 1) {
-        // Det finns ett n��sta inlägg
+        // Det finns ett nästa inlägg
         const nextPost = posts[currentIndex + 1];
         nextLink.href = nextPost.link;
         nextLink.textContent = "Nästa inlägg";
