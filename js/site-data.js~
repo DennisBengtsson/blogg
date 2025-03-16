@@ -47,7 +47,7 @@ const sidebarHTML = `
                 <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer" id="x-link"><i
                         class="fab fa-x-twitter"></i></a>
                 <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer"
-                   id="goodreads-link"><i class="fab fa-goodreads-f"></i></a>
+                   id="goodreads-link"><i class="fa-brands fa-goodreads"></i></a>
                 <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer"
                    id="linkedin-link"><i class="fab fa-linkedin-in"></i></a>
                 <a class="btn btn-outline-primary mr-2" href="#" target="_blank" rel="noopener noreferrer"
